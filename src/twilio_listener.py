@@ -4,6 +4,8 @@ from datetime import datetime
 import pytz
 import time
 import threading
+import socket
+
 
 
 class TwilioThreadedListener:
@@ -16,7 +18,9 @@ class TwilioThreadedListener:
         self._whitelist = whitelist
         self._received_sids = set()
 
-        startup_msg = "Text Control Initialized, you are whitelisted"
+        startup_msg = f"Text Control Initialized on host {socket.gethostname()}. You are whitelisted, send 'help' for" \
+                      f" documentation."
+
         for wl_number in self._whitelist:
             print(f"Alerting {wl_number} to initialization.")
             self.twilio_client.messages.create(to=wl_number, from_=self._from_number, body=startup_msg)
