@@ -2,6 +2,16 @@
 
 Small server that uses Twilio and interacts with your local Hue API.
 
+## Install:
+```pycon
+# pull this repo:
+git clone git@github.com:kb3vwt/TextHomeControl.git
+cd TextHomeControl
+# create .env and .whitelist files
+docker-compose build
+docker-compose up
+```
+
 ## .env file @ ./src/.env
 ```pycon
 TZ = America/New_York
